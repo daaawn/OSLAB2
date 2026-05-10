@@ -167,6 +167,10 @@ _forktest: forktest.o $(ULIB)
 mkfs: mkfs.c fs.h
 	gcc -Werror -Wall -o mkfs mkfs.c
 
+_uthread1: uthread1.o uthread_switch.o
+	$(LD) $(LDFLAGS) -N -e main -Ttext 0 -o _uthread1 uthread1.o uthread_switch.o $(ULIB)
+	$(OBJDUMP) -S _uthread1 > uthread1.asm
+
 # Prevent deletion of intermediate files, e.g. cat.o, after first build, so
 # that disk image changes after first build are persistent until clean.  More
 # details:
@@ -189,6 +193,9 @@ UPROGS=\
 	_usertests\
 	_wc\
 	_zombie\
+	_myid\
+	_uthread1\
+	
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)

@@ -20,3 +20,5 @@
 #define SYS_link   19
 #define SYS_mkdir  20
 #define SYS_close  21
+//LAB2 추가
+#define SYS_uthread_init 22

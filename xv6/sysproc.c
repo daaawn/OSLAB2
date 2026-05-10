@@ -89,3 +89,16 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+//LAB2 추가
+int
+sys_uthread_init(void){
+  int funcaddr;
+  //struct proc *p;
+
+  if(argint(0, &funcaddr) < 0) 
+    return -1; 
+  
+  return uthread_init(funcaddr);
+  
+}

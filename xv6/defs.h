@@ -155,6 +155,8 @@ int             argstr(int, char**);
 int             fetchint(uint, int*);
 int             fetchstr(uint, char**);
 void            syscall(void);
+//LAB2 추가
+int             uthread_init(int);
 
 // timer.c
 void            timerinit(void);

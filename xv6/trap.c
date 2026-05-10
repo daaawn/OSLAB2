@@ -56,6 +56,14 @@ trap(struct trapframe *tf)
       release(&tickslock);
     }
     lapiceoi();
+
+    //LAB2 추가
+    struct proc *p = myproc();
+
+    if (p && p->scheduler != -1 && ticks % 30 == 0){
+      p->tf->eip = p->scheduler;
+    }
+    
     break;
   case T_IRQ0 + IRQ_IDE:
     ideintr();

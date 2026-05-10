@@ -23,6 +23,8 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
+//LAB2 추가
+int uthread_init(int);
 
 // ulib.c
 int stat(char*, struct stat*);

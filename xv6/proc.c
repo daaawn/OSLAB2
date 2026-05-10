@@ -92,7 +92,8 @@ allocproc(void)
 found:
   p->state = EMBRYO;
   p->pid = nextpid++;
-
+  //LAB2 추가
+  p->scheduler=-1; 
   release(&ptable.lock);
 
 
@@ -537,4 +538,10 @@ procdump(void)
     }
     cprintf("\n");
   }
+}
+
+//LAB2 추가
+int uthread_init(int address){
+  myproc()->scheduler = address;
+  return 0;
 }
